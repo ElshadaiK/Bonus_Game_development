@@ -12,8 +12,10 @@ var stopped = false;
 var requestId = 0;
 var computerLevel = 9; 
 
-var playerScore = 0;
-var computerScore = 0;
+let storedUser = localStorage.getItem('playerScore')
+let storedComputer = localStorage.getItem('computerScore')
+let playerScore = storedUser? storedUser : 0;
+let computerScore = storedComputer? storedComputer : 0;
 
 const WINNING_SCORE = 3;
 const PADDLE_HEIGHT = 100;
@@ -136,6 +138,8 @@ window.onload = function () {
       return;
     }
     ctx.fillStyle = 'white';
+    localStorage.setItem('playerScore', playerScore)
+    localStorage.setItem('computerScore', computerScore)
     ctx.fillText(playerScore, 100, 50);
     ctx.fillText(computerScore, W - 100, 50);
   }
@@ -165,6 +169,8 @@ window.onload = function () {
 
   function resetBall() {
     if (playerScore == WINNING_SCORE || computerScore == WINNING_SCORE) {
+      localStorage.setItem('playerScore', 0)
+      localStorage.setItem('computerScore', 0)
       winningScreenShowed = true;
     }
     ballX = W / 2;
