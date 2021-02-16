@@ -73,6 +73,7 @@ window.onload = function () {
       console.log(speed);
     }
     var indent = (speed > computerLevel) ? -10 : 40;
+    // var indent = getRadomNumber(-10, 40)
     paddle2Y = ballY - indent;
   }
 
